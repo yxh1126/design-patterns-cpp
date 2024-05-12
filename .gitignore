@@ -1,0 +1,6 @@
+*.out
+*.cmake
+*.txt
+Makefile
+CMakeFiles/
+output/
