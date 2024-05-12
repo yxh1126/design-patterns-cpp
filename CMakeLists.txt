@@ -38,10 +38,11 @@ foreach(_dir IN ITEMS ${PATTERNS})
                                 ${_file} NAME
         )
 
-        set(_project_name "${_file_name}")
+        get_filename_component(FILENAME_NO_EXT "${_file_name}" NAME_WE)
+        set(_project_name "${FILENAME_NO_EXT}.out")
         message(STATUS "  ${_dir}/${_file_name} is going to be built")
-        
+
         add_executable(${_project_name} "${_dir}/${_file_name}")
     endforeach()
-    
+
 endforeach()
