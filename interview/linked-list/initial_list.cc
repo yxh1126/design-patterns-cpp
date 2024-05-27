@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
   // std::cout << p->data << std::endl;
   LinkedList *list = new LinkedList();
   for (int i = 0; i < 10; i++) {
-    list->push_back(i);  
+    list->push_back(i);
   }
 
   list->print_list();

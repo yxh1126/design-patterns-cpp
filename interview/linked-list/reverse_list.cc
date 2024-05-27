@@ -27,6 +27,11 @@ class LinkedList {
 
   void print_list() {
     auto* curr_node = head;
+
+    if (curr_node == nullptr) {
+      return;
+    }
+
     while (curr_node->next != nullptr) {
       std::cout << curr_node->data << "-->";
       curr_node = curr_node->next;
@@ -37,6 +42,10 @@ class LinkedList {
   void reverse_list() {
     LinkedListNode* prev = nullptr;
     LinkedListNode* curr = head;
+
+    if (curr == nullptr) {
+      return;
+    }
 
     while (head->next != nullptr) {
       head = head->next;
@@ -55,7 +64,7 @@ class LinkedList {
 int main(int argc, char **argv) {
   LinkedList *list = new LinkedList();
   for (int i = 0; i < 10; i++) {
-    list->push_back(i);  
+    list->push_back(i);
   }
   list->print_list();
 
@@ -63,4 +72,7 @@ int main(int argc, char **argv) {
   list->print_list();
 
   while (list->pop_node() != nullptr) {}
+
+  list->reverse_list();
+  list->print_list();
 }
