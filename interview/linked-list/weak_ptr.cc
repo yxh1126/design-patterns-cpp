@@ -10,7 +10,7 @@ void check_weak(std::weak_ptr<int>& wp) {
   }
 }
 
-int main() {
+int main(int argc, char **argv) {
   std::shared_ptr<int> sp1(new int(10));
   std::shared_ptr<int> sp2 = sp1;
   std::weak_ptr<int> wp = sp1;
