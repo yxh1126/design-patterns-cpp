@@ -3,7 +3,8 @@
 // Uncomment the line blow for pack the memory size
 // https://carlosvin.github.io/langs/en/posts/cpp-pragma-pack/
 
-// #pragma pack(1)
+// warning: alignment must be a small power of two
+#pragma pack(1)
 class CombStruct {
  public:
   bool a;
@@ -29,6 +30,7 @@ class CombStruct {
     std::cout << sum << std::endl;
   }
 };
+#pragma pack(0)
 
 int main(int argc, char **argv) {
   CombStruct cs;
