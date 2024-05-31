@@ -25,6 +25,21 @@ class LinkedList {
     return head;
   }
 
+  void traverse() {
+    print_list(this->head);
+  }
+
+  void print_list(LinkedListNode* head) {
+    if (head == nullptr) {
+      std::cout << "null" << std::endl;
+      return;
+    }
+
+    std::cout << head->data << "-->";
+    print_list(head->next);
+    // std::cout << head->data << "-->";
+  }
+
   void print_list() {
     auto* curr_node = head;
 
@@ -70,6 +85,7 @@ int main(int argc, char **argv) {
 
   list->reverse_list();
   list->print_list();
+  list->traverse();
 
   while (list->pop_node() != nullptr) {}
 
