@@ -28,12 +28,24 @@ union DataPackWrap {
   uint32_t raw_data;
 };
 
+void using_bit_shift(uint32_t raw_frame) {
+  uint32_t msg_id = (raw_frame >> 30) & 0b11;
+  uint32_t num_packs = (raw_frame >> 27) & 0b111;
+  uint32_t packet_id = (raw_frame >> 24) & 0b111;
+  uint32_t permissions = (raw_frame >> 20) & 0b1111;
+
+  std::cout << std::hex << "MSG_ID: 0b" << std::bitset<2>(msg_id) << std::endl;
+  std::cout << std::hex << "NUM_PK: 0b" << std::bitset<3>(num_packs) << std::endl;
+  std::cout << std::hex << "PAK_ID: 0b" << std::bitset<3>(packet_id) << std::endl;
+  std::cout << std::hex << "PEMMIS: 0b" << std::bitset<4>(permissions) << std::endl;
+}
+
 int main(int argc, char **argv) {
   DataPack frame;
   frame.error_code = 0x00;
   frame.data_frame = 0x3344;
-  frame.permissions = 0x01;
-  frame.packet_id = 0x00;
+  frame.permissions = 0b1011;
+  frame.packet_id = 0x01;
   frame.num_packs = 0x02;
   frame.msg_id = 0b10;
 
@@ -59,4 +71,6 @@ int main(int argc, char **argv) {
   // Index 0 is come at the first position (left side) of the array
   int arry[3] = {100, 200, 300};
   std::cout << arry[0] << std::endl;
+
+  using_bit_shift(raw_data);
 }
