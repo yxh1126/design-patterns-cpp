@@ -40,6 +40,19 @@ void using_bit_shift(uint32_t raw_frame) {
   std::cout << std::hex << "PEMMIS: 0b" << std::bitset<4>(permissions) << std::endl;
 }
 
+void print_uint32_bits(uint32_t num) {
+  std::cout << "0b";
+  for (int i = 31; i >= 0; i--) {
+    bool is_true = ((num & (1 << i)) != 0);
+    if (is_true) {
+      std::cout << 1;
+    } else {
+      std::cout << 0;
+    }
+  }
+  std::cout << std::endl;
+}
+
 int main(int argc, char **argv) {
   DataPack frame;
   frame.error_code = 0x00;
@@ -54,6 +67,7 @@ int main(int argc, char **argv) {
 
   std::cout << sizeof(frame) << std::endl;
   std::cout << std::hex << "0x" << wrap.raw_data << std::endl;
+  print_uint32_bits(wrap.raw_data);
   std::cout << "0b" << std::bitset<sizeof(uint32_t) * 8>(wrap.raw_data) << std::endl;
 
   uint32_t raw_data = wrap.raw_data;
